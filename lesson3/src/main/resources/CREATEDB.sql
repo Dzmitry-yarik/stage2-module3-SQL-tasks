@@ -2,7 +2,7 @@ CREATE TABLE student
 (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(45),
-    birthday DATE NOT NULL,,
+    birthday DATE NOT NULL,
     groupnumber INT NOT NULL
 );
 

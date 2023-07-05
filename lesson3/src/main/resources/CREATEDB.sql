@@ -1,14 +1,15 @@
 CREATE TABLE student
 (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50),
-    birthday DATE NOT NULL,
+    name VARCHAR(45),
+    birthday DATE NOT NULL,,
     groupnumber INT NOT NULL
 );
+
 CREATE TABLE subject
 (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50),
+    name VARCHAR(250),
     description VARCHAR(255),
     grade int NOT NULL CHECK(grade > 0 AND grade < 6)
 );
@@ -16,14 +17,14 @@ CREATE TABLE subject
 CREATE TABLE paymenttype
 (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) UNIQUE
+    name VARCHAR(45) UNIQUE
 );
 
 CREATE TABLE payment
 (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     type_id BIGINT NOT NULL,
-    amount DECIMAL(10,2) NOT NULL,
+    amount decimal NOT NULL,
     payment_date TIMESTAMP  NOT NULL,
     student_id BIGINT NOT NULL,
     foreign key (type_id) references paymenttype(id),
@@ -35,7 +36,7 @@ CREATE TABLE mark
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     student_id BIGINT NOT NULL,
     subject_id BIGINT NOT NULL,
-    mark INT NOT NULL CHECK(mark > 0 AND mark < 11),
+    mark INT CHECK(mark > 0 AND mark < 11),
     foreign key (student_id) references student(id),
     foreign key (subject_id) references subject(id)
 );
